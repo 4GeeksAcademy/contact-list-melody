@@ -1,11 +1,13 @@
 import React from "react";
 import "../../styles/home.css";
-import {Footer}  from "../component/footer";
+import {Cards} from "../component/cards.jsx";
 
 
-export const Home = () => (
-	<div className="text-center mt-5">
+export const Home = () => {
 
-		<Footer />
-	</div>
-);
+	return (
+		<div className="text-center mt-5">
+			<Cards />
+		</div>
+	);
+};
