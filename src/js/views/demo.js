@@ -7,26 +7,41 @@ import "../../styles/demo.css";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
+	const [fullName, setFullName ] = useState("");
+	const [emailAddress, setEmailAddress ] = useState("");
+	const [phoneNumber, setPhoneNumber ] = useState("");
+	const [PostalAddress, setPostalAddress ] = useState("");
+
+	const handleSubmit = e => {
+		e.preventDefault();
+		console.log(fullName);
+		/* actions.addContact( fullName, emailAddress, phoneNumber, PostalAddress );
+		setFullName("");
+		setEmailAddress("");
+		setPhoneNumber("");
+		setPostalAddress(""); */
+	}
 
 	return (
+
 		<div className="container">
 			<h1 className="text-center">Add a new contact</h1>
-		<form>
+		<form onSubmit={handleSubmit} >
 			<div className="mb-3">
-				<label for="exampleInputEmail1" className="form-label" >Full name</label>
-				<input type="text" className="form-control" placeholder = "Type name here..." />
+				<label className="form-label" >Full name</label>
+				<input type="text" className="form-control" value={fullName} onChange={e => setFullName(e.target.value)}  placeholder = "Type name here..." />
 			</div>
 			<div className="mb-3">
-				<label for="exampleInputEmail1" className="form-label" >Email</label>
-				<input type="email" className="form-control" placeholder = "Enter email here..." />
+				<label className="form-label" >Email</label>
+				<input type="email" className="form-control" value={emailAddress} onChange={e => setEmailAddress(e.target.value)} placeholder = "Enter email here..." />
 			</div>
 			<div className="mb-3">
-				<label for="exampleInputEmail1" className="form-label" >Phone Number</label>
-				<input type="text" className="form-control" placeholder = "Enter number here..." />
+				<label className="form-label" >Phone Number</label>
+				<input type="text" className="form-control" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} placeholder = "Enter number here..." />
 			</div>
 			<div className="mb-3">
-				<label for="exampleInputEmail1" className="form-label" >Address</label>
-				<input type="text" className="form-control" placeholder = "Enter address here..." />
+				<label className="form-label" >Address</label>
+				<input type="text" className="form-control" value={PostalAddress} onChange={e => setPostalAddress(e.target.value)} placeholder = "Enter address here..." />
 			</div>
 			<div className="d-grid gap-2">
 			<button type="submit" className="btn btn-primary">Save</button>
@@ -34,9 +49,11 @@ export const Demo = () => {
 
 			
 		</form>
+		<button onClick={ ()=> console.log(fullName)}> ver detalles </button>
 			<Link to="/">
 				<button className="btn btn-link">or get back to Contacts</button>
 			</Link>
 		</div>
+		
 	);
 };
